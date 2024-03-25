@@ -144,6 +144,7 @@ jobs:
           file: ./overleaf/server-ce/Dockerfile
           build-args: |
             SHARELATEX_BASE_TAG=${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}-base:main
+            NPM_CONFIG_LOGLEVEL=info
 
 
       # Sign the resulting Docker image digest except on PRs.
