@@ -100,7 +100,7 @@ jobs:
           # cache-from: type=gha
           # cache-to: type=gha,mode=max
           no-cache: true
-          platforms: linux/amd64
+          platforms: linux/amd64, linux/arm64/v8
           file: ./overleaf/server-ce/Dockerfile-base
       
       # Sign the resulting Docker image digest except on PRs.
@@ -137,7 +137,7 @@ jobs:
           # cache-from: type=gha
           # cache-to: type=gha,mode=max
           no-cache: true
-          platforms: linux/amd64
+          platforms: linux/amd64, linux/arm64/v8
           file: ./overleaf/server-ce/Dockerfile
           build-args: |
             SHARELATEX_BASE_TAG=${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}-base:main
