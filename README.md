@@ -1,0 +1,1 @@
+Modified version of Overleaf server, based on https://github.com/Eisfunke/overleaf.

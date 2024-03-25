@@ -1,0 +1,14 @@
+extends ../layout-marketing
+
+block content
+	main.content.content-alt#main-content
+		.container
+			.row
+				.col-md-6.col-md-offset-3.col-lg-4.col-lg-offset-4
+					.card
+						.page-header
+							h1 #{translate("log_in")}
+						.card-body.text-center
+							p
+								| Welcome to this Overleaf server!
+							a.btn.btn-primary.mt-2(href="/login/oidc", role="button") login with Keycloak
