@@ -215,7 +215,7 @@ jobs:
       - name: Checkout Overleaf patch repo
         uses: actions/checkout@v3
         with:
-          repository: davrot/ldap-overleaf-sl
+          repository: smeetsee/ldap-overleaf-sl
           path: overleaf-patches
       
       - name: Checkout Overleaf repo
