@@ -222,16 +222,35 @@ jobs:
         uses: actions/checkout@v3
         with:
           repository: overleaf/overleaf
-          path: overleaf-patches/ldap-overleaf-sl/sharelatex
+          path: overleaf
       
-      - name: Fix permissions
-        run: chmod +x overleaf-patches/ldap-overleaf-sl/*.sh
-      - name: Extract patch source files from Git repository
-        run: ./extract_files_from_git.sh
-        working-directory: overleaf-patches/ldap-overleaf-sl
-      - name: Apply patch files
-        run: ./apply_diffs_5.sh
-        working-directory: overleaf-patches/ldap-overleaf-sl
+      - name: Patch AuthenticationManager.js
+        run: patch overleaf/services/web/app/src/Features/Authentication/AuthenticationManager.js overleaf-patches/ldap-overleaf-sl/sharelatex/AuthenticationManager.js.diff
+      - name: Patch AuthenticationController.js
+        run: patch overleaf/services/web/app/src/Features/Authentication/AuthenticationController.js overleaf-patches/ldap-overleaf-sl/sharelatex/AuthenticationController.js.diff
+      - name: Patch ContactController.js
+        run: patch overleaf/services/web/app/src/Features/Contacts/ContactController.js overleaf-patches/ldap-overleaf-sl/sharelatex/ContactController.js.diff
+      - name: Patch router.js
+        run: patch overleaf/services/web/app/src/router.js overleaf-patches/ldap-overleaf-sl/sharelatex/router.js.diff
+      - name: Patch settings.pug
+        run: patch overleaf/services/web/app/views/user/settings.pug overleaf-patches/ldap-overleaf-sl/sharelatex/settings.pug.diff
+      - name: Patch login.pug
+        run: patch overleaf/services/web/app/views/user/login.pug overleaf-patches/ldap-overleaf-sl/sharelatex/login.pug.diff
+      - name: Patch navbar.pug
+        run: patch services/web/app/views/layout/navbar.pug overleaf-patches/ldap-overleaf-sl/sharelatex/navbar.pug.diff
+      - name: Patch navbar-marketing.pug
+        run: patch overleaf/services/web/app/views/layout/navbar-marketing.pug overleaf-patches/ldap-overleaf-sl/sharelatex/navbar-marketing.pug.diff
+      - name: Patch admin-index.pug
+        # isAdmin group is allowed to add users to sharelatex and post messages
+        run: patch overleaf/services/web/app/views/admin/index.pug overleaf-patches/ldap-overleaf-sl/sharelatex/admin-index.pug.diff
+      # - name: Patch admin-sysadmin.pug
+      # # isAdmin group is allowed to logout other users / set maintenance mode
+      #   run: patch overleaf/services/web/app/views/admin/index.pug overleaf-patches/ldap-overleaf-sl/sharelatex/admin-sysadmin.pug.diff
+
+      - name: Enable shell-escape (part 1)
+        run: sed -iE "s%-synctex=1\",%-synctex=1\", \"-shell-escape\",%g" overleaf/services/clsi/app/js/LatexRunner.js
+      - name: Enable shell-escape (part 2)
+        run: sed -iE "s%'-synctex=1',%'-synctex=1', '-shell-escape',%g" overleaf/services/clsi/app/js/LatexRunner.js
 
       # Install the cosign tool except on PR
       # https://github.com/sigstore/cosign-installer
