@@ -225,27 +225,27 @@ jobs:
           path: overleaf
       
       - name: Patch AuthenticationManager.js
-        run: patch overleaf/services/web/app/src/Features/Authentication/AuthenticationManager.js overleaf-patches/ldap-overleaf-sl/sharelatex/AuthenticationManager.js.diff
+        run: patch overleaf/services/web/app/src/Features/Authentication/AuthenticationManager.js overleaf-patches/ldap-overleaf-sl/sharelatex_diff/AuthenticationManager.js.diff
       - name: Patch AuthenticationController.js
-        run: patch overleaf/services/web/app/src/Features/Authentication/AuthenticationController.js overleaf-patches/ldap-overleaf-sl/sharelatex/AuthenticationController.js.diff
+        run: patch overleaf/services/web/app/src/Features/Authentication/AuthenticationController.js overleaf-patches/ldap-overleaf-sl/sharelatex_diff/AuthenticationController.js.diff
       - name: Patch ContactController.js
-        run: patch overleaf/services/web/app/src/Features/Contacts/ContactController.js overleaf-patches/ldap-overleaf-sl/sharelatex/ContactController.js.diff
+        run: patch overleaf/services/web/app/src/Features/Contacts/ContactController.js overleaf-patches/ldap-overleaf-sl/sharelatex_diff/ContactController.js.diff
       - name: Patch router.js
-        run: patch overleaf/services/web/app/src/router.js overleaf-patches/ldap-overleaf-sl/sharelatex/router.js.diff
+        run: patch overleaf/services/web/app/src/router.js overleaf-patches/ldap-overleaf-sl/sharelatex_diff/router.js.diff
       - name: Patch settings.pug
-        run: patch overleaf/services/web/app/views/user/settings.pug overleaf-patches/ldap-overleaf-sl/sharelatex/settings.pug.diff
+        run: patch overleaf/services/web/app/views/user/settings.pug overleaf-patches/ldap-overleaf-sl/sharelatex_diff/settings.pug.diff
       - name: Patch login.pug
-        run: patch overleaf/services/web/app/views/user/login.pug overleaf-patches/ldap-overleaf-sl/sharelatex/login.pug.diff
+        run: patch overleaf/services/web/app/views/user/login.pug overleaf-patches/ldap-overleaf-sl/sharelatex_diff/login.pug.diff
       - name: Patch navbar.pug
-        run: patch services/web/app/views/layout/navbar.pug overleaf-patches/ldap-overleaf-sl/sharelatex/navbar.pug.diff
+        run: patch services/web/app/views/layout/navbar.pug overleaf-patches/ldap-overleaf-sl/sharelatex_diff/navbar.pug.diff
       - name: Patch navbar-marketing.pug
-        run: patch overleaf/services/web/app/views/layout/navbar-marketing.pug overleaf-patches/ldap-overleaf-sl/sharelatex/navbar-marketing.pug.diff
+        run: patch overleaf/services/web/app/views/layout/navbar-marketing.pug overleaf-patches/ldap-overleaf-sl/sharelatex_diff/navbar-marketing.pug.diff
       - name: Patch admin-index.pug
         # isAdmin group is allowed to add users to sharelatex and post messages
-        run: patch overleaf/services/web/app/views/admin/index.pug overleaf-patches/ldap-overleaf-sl/sharelatex/admin-index.pug.diff
+        run: patch overleaf/services/web/app/views/admin/index.pug overleaf-patches/ldap-overleaf-sl/sharelatex_diff/admin-index.pug.diff
       # - name: Patch admin-sysadmin.pug
       # # isAdmin group is allowed to logout other users / set maintenance mode
-      #   run: patch overleaf/services/web/app/views/admin/index.pug overleaf-patches/ldap-overleaf-sl/sharelatex/admin-sysadmin.pug.diff
+      #   run: patch overleaf/services/web/app/views/admin/index.pug overleaf-patches/ldap-overleaf-sl/sharelatex_diff/admin-sysadmin.pug.diff
 
       - name: Enable shell-escape (part 1)
         run: sed -iE "s%-synctex=1\",%-synctex=1\", \"-shell-escape\",%g" overleaf/services/clsi/app/js/LatexRunner.js
