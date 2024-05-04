@@ -292,14 +292,14 @@ jobs:
         id: build-and-push-base
         uses: docker/build-push-action@ac9327eae2b366085ac7f6a2d02df8aa8ead720a
         with:
-          context: ./overleaf-patches/ldap-overleaf-sl/sharelatex
+          context: ./overleaf
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.meta-base.outputs.tags }}
           labels: ${{ steps.meta-base.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
           platforms: linux/amd64, linux/arm64/v8
-          file: ./overleaf-patches/ldap-overleaf-sl/sharelatex/server-ce/Dockerfile-base
+          file: ./overleaf/server-ce/Dockerfile-base
       
       # Sign the resulting Docker image digest except on PRs.
       # This will only write to the public Rekor transparency log when the Docker
@@ -328,7 +328,7 @@ jobs:
         id: build-and-push
         uses: docker/build-push-action@ac9327eae2b366085ac7f6a2d02df8aa8ead720a
         with:
-          context: ./overleaf-patches/ldap-overleaf-sl/sharelatex
+          context: ./overleaf
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
@@ -336,7 +336,7 @@ jobs:
           cache-to: type=gha,mode=max
           # no-cache: true
           platforms: linux/amd64
-          file: ./overleaf-patches/ldap-overleaf-sl/sharelatex/server-ce/Dockerfile
+          file: ./overleaf/server-ce/Dockerfile
           build-args: |
             SHARELATEX_BASE_TAG=${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}-ldap-base:main
             NPM_CONFIG_LOGLEVEL=info
@@ -369,7 +369,7 @@ jobs:
         id: build-and-push-full
         uses: docker/build-push-action@ac9327eae2b366085ac7f6a2d02df8aa8ead720a
         with:
-          context: ./overleaf-patches/ldap-overleaf-sl/sharelatex
+          context: ./overleaf
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.meta-full.outputs.tags }}
           labels: ${{ steps.meta-full.outputs.labels }}
