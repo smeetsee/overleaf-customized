@@ -45,7 +45,7 @@ jobs:
       - name: Change Git author name
         run: sed -i -e 's;Overleaf Git Bridge;Overleaf;g' Dockerfile
       - name: Change logout endpoint
-        run: sed -i 's/client.get( olServer + \/logout/client.get( olServer + \/project/g' src/olops/logout.js
+        run: sed -i 's/client.get( olServer + \x27\/logout\x27 )/client.get( olServer + \x27\/project\x27 )/' src/olops/logout.js
 
 
       # Install the cosign tool except on PR
