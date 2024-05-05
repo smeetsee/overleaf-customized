@@ -252,6 +252,8 @@ jobs:
       - name: Enable shell-escape (part 2)
         run: sed -iE "s%'-synctex=1',%'-synctex=1', '-shell-escape',%g" overleaf/services/clsi/app/js/LatexRunner.js
 
+      - name: Set WORKDIR
+        run: echo 'WORKDIR /overleaf/services/web' >> overleaf/server-ce/Dockerfile-base
       - name: Install LDAP library in Docker container
         run: echo 'RUN npm install ldap-escape ldapts-search ldapts@3.2.4' >> overleaf/server-ce/Dockerfile-base
 
