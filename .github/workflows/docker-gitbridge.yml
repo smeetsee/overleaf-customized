@@ -41,9 +41,11 @@ jobs:
           repository: camillemndn/overleaf-gitbridge
       
       - name: Change Git author email
-        run: sed -ie 's;overleaf-git-bridge@system.changeme.invalid;overleaf@smeets.ee;g' Dockerfile
+        run: sed -i -e 's;overleaf-git-bridge@system.changeme.invalid;overleaf@smeets.ee;g' Dockerfile
       - name: Change Git author name
-        run: sed -ie 's;Overleaf Git Bridge;Overleaf;g' Dockerfile
+        run: sed -i -e 's;Overleaf Git Bridge;Overleaf;g' Dockerfile
+      - name: Change logout endpoint
+        run: sed -i -e 's%const res = await client.get( olServer + '/logout' );%const res = await client.get( olServer );%g' src/olops/logout.js
 
 
       # Install the cosign tool except on PR
