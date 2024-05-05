@@ -253,9 +253,9 @@ jobs:
         run: sed -iE "s%'-synctex=1',%'-synctex=1', '-shell-escape',%g" overleaf/services/clsi/app/js/LatexRunner.js
 
       - name: Set WORKDIR
-        run: echo 'WORKDIR /overleaf/services/web' >> overleaf/server-ce/Dockerfile-base
+        run: echo 'WORKDIR /overleaf/services/web' >> overleaf/server-ce/Dockerfile
       - name: Install LDAP library in Docker container
-        run: echo 'RUN npm install ldap-escape ldapts-search ldapts@3.2.4' >> overleaf/server-ce/Dockerfile-base
+        run: echo 'RUN npm install ldap-escape ldapts-search ldapts@3.2.4' >> overleaf/server-ce/Dockerfile
 
       # Install the cosign tool except on PR
       # https://github.com/sigstore/cosign-installer
