@@ -338,7 +338,7 @@ jobs:
           platforms: linux/amd64
           file: ./overleaf/server-ce/Dockerfile
           build-args: |
-            SHARELATEX_BASE_TAG=${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}-ldap-base:main
+            OVERLEAF_BASE_TAG=${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}-ldap-base:main
             NPM_CONFIG_LOGLEVEL=info
 
 
