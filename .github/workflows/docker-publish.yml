@@ -54,7 +54,7 @@ jobs:
         run: sed -ie 's;FSorg-Login;Login;g' overleaf/services/web/app/views/layout/navbar-marketing.pug
       
       - name: Change proxy destination address
-        run: sed -ie 's;127.0.0.1;localhost;g' overleaf/server-ce/nginx/sharelatex.conf
+        run: sed -ie 's;127.0.0.1;localhost;g' overleaf/server-ce/nginx/overleaf.conf
 
       # Install the cosign tool except on PR
       # https://github.com/sigstore/cosign-installer
