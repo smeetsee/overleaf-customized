@@ -237,7 +237,7 @@ jobs:
       - name: Patch login.pug
         run: patch overleaf/services/web/app/views/user/login.pug overleaf-patches/ldap-overleaf-sl/sharelatex_diff/login.pug.diff
       - name: Patch navbar.pug
-        run: patch overleaf/services/web/app/views/layout/navbar.pug overleaf-patches/ldap-overleaf-sl/sharelatex_diff/navbar.pug.diff
+        run: patch overleaf/services/web/app/views/layout/navbar-website-redesign.pug overleaf-patches/ldap-overleaf-sl/sharelatex_diff/navbar-website-redesign.pug.diff
       - name: Patch navbar-marketing.pug
         run: patch overleaf/services/web/app/views/layout/navbar-marketing.pug overleaf-patches/ldap-overleaf-sl/sharelatex_diff/navbar-marketing.pug.diff
       - name: Patch admin-index.pug
